@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="text/javascript" src="app.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body onload=finalProject()>
+
+    <header class="positioned">
+        <h1>Flight Delay Visualization</h1>
+        <nav>
+            <ul>
+                <li><a href="https://taekun.com/portfolio/san_delayed_flights/">Back to Website</a></li>
+                <li><a href="https://github.com/taekunkim/SAN_airport_viz">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div>
+            <h1 class="title">Flight Delays at San Diego International Airport</h1>
+
+            <h4 style="font-weight:normal">
+                This project showcases data visualization of flights leaving the San Diego International Airport in
+                2021.<br>
+                For the ease of interpretability of the visualizations, only data from certain airlines have been
+                chosen.
+            </h4>
+
+            <br>
+
+            <div>
+                <h2>Relationship Between Types of Delay and Airlines</h2>
+                <p>This visualization shows the percentage of delayed flights each cause of delay is responsible
+                    for.<br>
+                    For instance, around 0.20% of delayed flights for Alaskan Airlines is caused by weather issues.</p>
+                <div id="radioBar" class="center_plot">
+                    <input type="radio" id="barplot_general" name="delayCause" value="DelayMins" checked="checked">
+                    <label for="general">General</label>
+                    <input type="radio" id="barplot_general" name="delayCause" value="CarrierDelay">
+                    <label for="carrier">Carrier</label>
+                    <input type="radio" id="barplot_general" name="delayCause" value="WeatherDelay">
+                    <label for="weather">Weather</label>
+                    <input type="radio" id="barplot_general" name="delayCause" value="AviationSystemDelay">
+                    <label for="aviationSystem">Aviation System</label>
+                    <input type="radio" id="barplot_general" name="delayCause" value="SecurityDelay">
+                    <label for="security">Security</label>
+                    <input type="radio" id="barplot_general" name="delayCause" value="LateArrivalDelay">
+                    <label for="lateArrival">Late Arrival</label>
+                </div>
+
+                <div id="barPlot" class="center_plot">
+                </div>
+            </div>
+
+            <div>
+                <h2>Main Cause of Delay for Airlines</h2>
+                <p>This visualization shows at what time of the week flights are delayed the most.</p>
+                <div id="heatMap" class="center_plot">
+                </div>
+            </div>
+
+            <div>
+                <h2>Percentage of Delayed Flight per State</h2>
+                <p>This is a choropleth that shows the percentage of delayed flights for each arrival state.<br>
+                    For instance, flights headed to Idaho are delayed the most. </p>
+                <div id="choropleth" class="center_plot">
+                </div>
+            </div>
+
+            <div>
+                <h2>Percentage of Delayed Flight per State</h2>
+                <p>This is a force-link diagram that shows the percentage of delayed flights for each arrival state.<br>
+                    The red node indicates the origin airport, San Diego, and the green nodes represent the country each
+                    flight
+                    is headed to.<br>
+                    The blue nodes mark the destination states the flights fly to. Each of the blue node is connected to
+                    the
+                    country it is located in. <br>
+                    The size of each of the blue nodes indicates the percentage of times for which flights to that state
+                    was
+                    delayed.<br>
+                    Please refer to the legend to get an idea of how to interpret the sizes of the blue nodes.
+                </p>
+                <div id="forcelink" class="center_plot">
+                </div>
+            </div>
+
+            <div>
+                <h2>Relationship Between Delay Time and Travel Distance</h2>
+                <p>This visualization shows that, as the flight distance increases, the minutes of delay increases. <br>
+                    Flights with over 180 minutes of delay were removed from the dataset to
+                    improve interpretability of the graph.</p>
+                <div id="scatterPlot" class="center_plot">
+                </div><br>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
