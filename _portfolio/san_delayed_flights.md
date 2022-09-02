@@ -1,6 +1,6 @@
 ---
 title: "San Diego Airport Flight Delays"
-excerpt: "Visualizing data with JavaScript<br/><img src='/images/500x300.png'>"
+excerpt: "Visualizing interactive data with JavaScript<br/><img src='../images/portfolio_thumbnails/sandiego_flight.png'>"
 collection: portfolio
 ---
 
