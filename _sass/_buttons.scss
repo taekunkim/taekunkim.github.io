@@ -26,6 +26,10 @@
     background-color: mix(white, #000, 20%);
   }
 
+  &:link {
+    text-decoration: none;
+  }
+
   .icon {
     margin-right: 0.5em;
   }
@@ -160,4 +164,9 @@ $color in $social {
 
 .demo_btn {
   background-color: #FF4778;
+  text-decoration: none;
+}
+
+.github_btn {
+  background-color: #333;
 }

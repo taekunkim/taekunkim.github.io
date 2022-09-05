@@ -10,4 +10,5 @@ Visualizations like these can be sent to a mass of people to share in-depth anal
 
 Below is a demo of a brief interactable visualization of flight delays at San Diego International Airport (SAN). The visualizations were created using <b>Javascript</b> and <b>D3.js</b>.
 
-<a href="../../external_files/SAN_airport_viz/index.html" class="demo_btn btn">Demo</a>
+<a href="../../external_files/SAN_airport_viz/index.html" class="demo_btn btn" style="text_">Demo</a>
+<a href="https://github.com/taekunkim/SAN_airport_viz" class="github_btn btn"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a>
