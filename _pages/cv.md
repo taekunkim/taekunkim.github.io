@@ -20,7 +20,7 @@ redirect_from:
 <h1 style="line-height: 0.3;">Technical Skills</h1>
 * Programming Lanugages:
   * Proficient: Python, Java, SQL
-  * Familiar: Familiar: R, Stata, C, Go, JavaScript, HTML / CSS
+  * Familiar: R, Stata, C, Go, JavaScript, HTML / CSS
 * Data Science:
   * PyTorch, Pandas, SciKit-Learn, RegEx, Numpy, BeautifulSoup, GeoPandas
 <br><br>
