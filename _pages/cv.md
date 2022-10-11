@@ -25,6 +25,11 @@ redirect_from:
   * PyTorch, Pandas, SciKit-Learn, RegEx, Numpy, BeautifulSoup, GeoPandas
 <br><br>
 <h1 style="line-height: 0.3;">Work Experience</h1>
+><h2 style="line-height: 0.3;">Data Engineer Intern, Intel Corp.</h2>
+<span style="color:gray">Oct 2022 – Current</span>
+* Partners with Information Security Analysts and Software Developers to help configure, manage, secure and integrate data platforms and applications to support Intel's business needs. 
+* Enables application development and data integration/management as a member of a highly collaborative Agile DevOps delivery team.
+
 ><h2 style="line-height: 0.3;">Research Intern, Hippo T&C</h2>
 <span style="color:gray">July 2022 – Current</span>
 * Cleans and analyzes over 250 individuals’ fNIRS time-series neuroimage data to study how depression patients’ brains react to everyday tasks, as well as develop digital therapeutics, in partnership with Samsung Medical Center. 
