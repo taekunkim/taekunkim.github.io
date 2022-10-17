@@ -13,7 +13,7 @@ redirect_from:
 
 
 <h1 style="line-height: 0.3;">Education</h1>
-* B.S. in Data Science (M.S.), University of California - San Diego, 2023 (expected)
+* B.S. in Data Science (B.S.), University of California - San Diego, 2023 (expected)
   * Provost Honors (six terms) – Unweighted GPA 3.88 / 4.00 
   * Relevant Courses: Intro to Machine Learning, Probability and Statistical Methods, Data Analytics, Data Structures and Algorithms in Java and Python, Recommender System, Deep Learning, Big Data Platforms, Multivariable Calculus, Linear Algebra
 <br><br>
