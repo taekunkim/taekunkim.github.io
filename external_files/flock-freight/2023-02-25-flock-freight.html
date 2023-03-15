@@ -52,6 +52,12 @@
             margin-top: 20px;
         }
 
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         #cardtitle {
             font-family: 'Roboto', sans-serif;
             color: #44741a
@@ -60,13 +66,103 @@
         #contact {
             font-size: 17px;
         }
+
+        * {
+            box-sizing: border-box
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 7px;
+            width: 7px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 0.3s;
+        }
+
+        .column2 {
+            float: left;
+            width: 40%;
+            margin: 50px;
+        }
+
+        .column3 {
+            float: left;
+            width: 30%;
+            margin: 10px;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <div class="header">
-        <h2>Minimizing Monetary and<br>Envrionmental Costs of<br>Freight Deliveries</h2>
+        <h2>Predicting Freight Delivery Costs</h2>
         <p style="font-size:23px;">A07: Giho Kim, Tae Kun Kim, Joyce Yan</p>
     </div>
 
@@ -74,71 +170,171 @@
         <div>
             <div class="card">
                 <h2 id="cardtitle">BACKGROUND</h2>
-                <p>Flock Freight is a logistics company that seeks to transform the freight industry by encouraging
-                    shared truckloads, which lower cost and carbon discharge. Acting as middleman, the firm helps
-                    customers connect with shipping companies and accepts the suitable offer. The task seems
-                    straightforward, but if the firm takes too long to decide, truckers can turn their eyes to a
-                    different logistics company. It is challenging to choose the best rate among multiple offers under
-                    such time constraints, so Flock Freight develop machine learning models that identifies the optimal
-                    offer as soon as the offer is made.</p>
-                <p>When considering the optimal stopping problem, the secretary approach is often discussed and might
-                    resemble the issue Flock Freight faces. However, when applied to Flock Freight’s situation, the
-                    performance is not satisfactory because the firm does not know how many offers an order will be
-                    receiving. Thus, an algorithm as complex as Flock Freight’s problem needs to be developed.</p>
+                <p>Flock Freight is a logistics company that helps customers ship freights across the nation
+                    economically. Acting as a middleman between customers and freight truck companies, Flock Freight
+                    puts customers' orders to auction. Truckers make offers to ship the freight at a lower price.
+                </p>
+                <img src="figures/logic.png" width=50% class="center">
+                <p>Bidders can revoke their offers at any time, so Flock Freight must know when it sees a good offer --
+                    waiting for a better offer means risking the current best offer to expire. This is called an Optimal
+                    Stopping Problem.
+                </p>
+                <img src="figures/optimal_stopping_problem.png" width=50% class="center">
+
+            </div>
+
+            <div class="card">
+                <h2 id="cardtitle">OBJECTIVE</h2>
+                <p>Create an Optimal Stopping model that selects the best offer received for each order</p>
             </div>
 
             <div class="card">
                 <h2 id="cardtitle">DATA</h2>
-                <p>Flock Freight has a rich amount of data on both the orders customers place and offers carriers make.
-                    The order data includes a wide array of features including the origin, destination, length, and
-                    pickup deadline of the item being shipped. The offer data includes the carrier ID, cost to deliver
-                    item, and whether Flock Freight accepted the offer.</p>
-                <p>When considering the optimal stopping problem, the secretary approach is often discussed and might
-                    resemble the issue Flock Freight faces. However, when applied to Flock Freight’s situation, the
-                    performance is not satisfactory because the firm does not know how many offers an order will be
-                    receiving. Thus, an algorithm as complex as Flock Freight’s problem needs to be developed.</p>
+                <p>There are 707,418 offers and 280,906 orders in the data set.</p>
+                <p>The offer data includes the offer date, offer rate, and offer type, which can be either PTL or FTL:
+                    PTL (Partial Truckload) shares a truck with multiple orders; FTL (Full Truckload) offers an entire
+                    truck to a single order.</p>
+                <p>The order data includes the order date, origin and destination zipcodes, route mileage, and
+                    preferences of the shipper.</p>
+            </div>
+
+            <div class="card">
+                <h2 id="cardtitle">EDA / DATA CLEANING / DATA ENGINEERING</h2>
+                <p>Outliers such as offers with extreme delivery rates and orders with overwhelming numbers of offers
+                    were removed.</p>
+
+                <div class="row" style="margin: auto">
+                    <div class="column2">
+                        <img src="figures/distribution_with_anomalies.png" width=100% class="center">
+
+                    </div>
+                    <div class="column2">
+                        <img src="figures/distribution_without_anomalies.png" width=100% class="center">
+                    </div>
+                </div>
+
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+
+                    <div class="mySlides fade">
+                        <img src="figures/best_offer_distribution.png" height=400px class="center">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="figures/offer_rate_distribution.png" height=400px class="center">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="figures/offer_count_distribution.png" height=400px class="center">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="figures/hours_given_distribution.png" height=400px class="center">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="figures/mileage_distribution.png" height=400px class="center">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="figures/length_distribution.png" height=400px class="center">
+                    </div>
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                </div>
+
+
+
+                <div class="row" style="margin: auto">
+                    <div class="column2">
+                        <img src="figures/offers_per_week.png" width=100% class="center">
+                    </div>
+                    <div class="column2">
+                        <img src="figures/median_best_offer_per_week.png" width=100% class="center">
+                    </div>
+                </div>
+
+                <div class="row" style="margin: auto">
+                    <div class="column2">
+                        <img src="figures/origin_map.png" width=100% class="center">
+                    </div>
+                    <div class="column2">
+                        <img src="figures/destination_map.png" width=100% class="center">
+                    </div>
+                </div>
+
+                <div class="row" style="margin: auto">
+                    <div class="column3">
+                        <img src="figures/median_offer_map.png" width=100%>
+                    </div>
+                    <div class="column3">
+                        <img src="figures/median_best_rate_map.png" width=100%>
+                    </div>
+                    <div class="column3">
+                        <img src="figures/rate_per_mile_map.png" width=100%>
+                    </div>
+                </div>
+
+                <p>Clustering zip codes to 10 regions enables ML models to use the 857 unique origin and destination
+                    zipcodes data as categorical features.</p>
+
+                <img src="figures/clusters_of_coordinates.png" height=300px class="center">
+
+                <p>Given that the gap between initial and final offer rates vary by the number of offers an order
+                    receives, a model that predicts the number of offers an order will received needs to be built.</p>
+
+                <div class="row" style="margin: auto">
+                    <div class="column2">
+                        <img src="figures/rate_change.png" width=100%>
+                    </div>
+                    <div class="column2">
+                        <img src="figures/offer_std.png" width=100%>
+                    </div>
+                </div>
+
             </div>
 
             <div class="card">
                 <h2 id="cardtitle">METHODS</h2>
-                <p>Four models were created: a classification model to determine whether an order will be shipped FTL or
-                    PTL; two regression models to predict FTL/PTL offer rates; a regression model to predict the number
-                    of offers an order will receive.</p>
+                <p>An estimate of offer rates is needed to identify a good offer. The EDA hints the importance of
+                    predicting the number of offers when estimating offer rates.</p>
 
-                <p>Overall, we are aiming to build a combined model for all four models to decide when to stop the
-                    auction and accept the offer from truck drivers for customers in order to maximize the profit. When
-                    we get an order from a customer, we check how many offers we would have first. After that, we will
-                    only check the predicted number of offers during the auction. And then we focus on this formula,
-                    P(pool) * E(cost to fulfill pooled) + (1-P(pool)) * E(cost to fulfill unpooled).</p>
+                <p> The goal is to identify the best offer, not to predict the magnitudes of offer rates. Thus, a
+                    classifier model is needed.</p>
 
-                <p>Based on the formula above, we try to predict the rate of an offer so that we can decide whether the
-                    offer is valid to accept or not. If the cost of the offer is less than the result of the above
-                    formula, then we accept the offer right away rather than waiting until we get the expected number of
-                    offers. Otherwise, the model accepts the last offer of the expected number of offers.</p>
+                <p> All in all, a two-part hybrid model should be created.</p>
 
-                <p>While building Decision Tree model, we first saw that it overfitted data easily. To not overfitting,
-                    we decided to see feature correlation and apply Grid Search method. First, used feature_importances
-                    function to see which columns were good. Based on the result, these columns were highly correlated
-                    with the number of offers, "RATE_USD", "PALLETIZED_LINEAR_FEET",
-                    "APPROXIMATE_DRIVING_ROUTE_MILEAGE", 'POP2012_ORIGIN', "x_ORIGIN", "y_ORIGIN",
-                    'LOAD_DELIVERED_FROM_OFFER', 'OFFER_TYPE', 'STATE_ORIGIN', 'STATE_DESTINATION',
-                    "POP2012_DESTINATION", "WEEKDAY_NUM", thus we started building the model just using these columns.
-                    And we applied GridSearch method to it.</p>
+                <img src="figures/models.png" width=50% class="center">
 
-                <p>Then, we build an ensemble model that consists of two sub-models, one for each offer type – each
-                    model predicts the expected offer rate for each delivery type. The first sub-model is a simple
-                    linear regression model that is responsible for predicting the estimated cost of delivering an FTL
-                    shipment. The second model is more complicated in that it not only predicts the estimated cost of
-                    delivering a PTL shipment but also utilizes logistic regression to predict the probability of a
-                    given item actually being pooled. That is, the second sub-model takes into account the fact that
-                    delivery items often have a lower chance of being pooled as their shipment deadlines approach. By
-                    incorporating this knowledge, the sub-model appreciates PTL offers more as the delivery deadline
-                    nears. Put together, these two sub-models can gauge the significance of each offer that is made to
-                    an order, enabling Flock Freight to make the decision to either take or reject the offer.</p>
+
+                <p>XGB Regressor, Decision Tree, and XGB Classifier are the best models to predict the offer rate,
+                    estimate number of offers, and identify best offers. </p>
             </div>
 
+            <div class="card">
+                <h2 id="cardtitle">RESULTS</h2>
+                <p>The hybrid model has an 56.0% accuracy in identifying best offers. That of Flock Freight is 51.7%.
+                </p>
+                <img src="figures/offer_model_feature_importance.png" width=50% class="center">
+                <img src="figures/minimum_cost_model_feature_importance.png" width=50% class="center">
+                <img src="figures/hybrid_model_feature_importance.png" width=50% class="center">
+            </div>
         </div>
-
     </div>
 
     <div class="card">
@@ -157,7 +353,37 @@
         </p>
     </div>
 
-    <img src="./Flock_Freight_Logo-removebg.png" width="300px" style="float: right;">
+    <img src="./Flock_Freight_Logo-removebg.png" width="20%" style="float: right;">
+
+    <script>
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
 
 </body>
 
