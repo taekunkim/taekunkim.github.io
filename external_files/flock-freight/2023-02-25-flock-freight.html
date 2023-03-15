@@ -345,6 +345,8 @@
                     </div>
                 </div>
 
+                <p>For each of the models, the importance of each feature was calculated.</p>
+
                 <img src="figures/offer_model_feature_importance.png" width=50% class="center">
                 <img src="figures/minimum_cost_model_feature_importance.png" width=50% class="center">
                 <img src="figures/hybrid_model_feature_importance.png" width=50% class="center">
@@ -354,19 +356,11 @@
                 <h2 id="cardtitle">RESULTS</h2>
                 <p>The hybrid model has an 56.0% accuracy in identifying best offers. That of Flock Freight is 51.7%.
                 </p>
-
-                <div class="row" style="margin: auto">
-                    <div class="column3">
-                        <img src="figures/offer_count_model_selection.png" width=100% class="center">
-
-                    </div>
-                    <div class="column3">
-                        <img src="figures/minimum_cost_model_selection.png" width=100% class="center">
-                    </div>
-                    <div class="column3">
-                        <img src="figures/hybrid_model_selection.png" width=100% class="center">
-                    </div>
-                </div>
+                <p>The final model is able to identify offers with lowest rates 8.2% more times than the original
+                    Flock Freight model does.</p>
+                <p>The hybrid model scores 81.4% in sensitivity and 71.8% in specificity.</p>
+                <p><b>That is, the hybrid model is able to identify 81.4 best offers for every 100 best offers.</b></p>
+                <p><b>Moreover, the hybrid model is able to identify 71.8 bad offers for every 100 bad offers.</b></p>
 
                 <div class="row" style="margin: auto">
                     <div class="column2">
@@ -377,6 +371,7 @@
                         <img src="figures/model_sensitivity.png" width=100% class="center">
                     </div>
                 </div>
+                <p></p>
             </div>
         </div>
     </div>
