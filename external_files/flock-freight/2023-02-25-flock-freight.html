@@ -56,6 +56,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            bottom: 0;
         }
 
         #cardtitle {
@@ -162,7 +163,7 @@
 <body>
 
     <div class="header">
-        <h2>Predicting Freight Delivery Costs</h2>
+        <h2>Selecting the Most Profittable<br>Freight Offer</h2>
         <p style="font-size:23px;">A07: Giho Kim, Tae Kun Kim, Joyce Yan</p>
     </div>
 
@@ -327,12 +328,55 @@
             </div>
 
             <div class="card">
-                <h2 id="cardtitle">RESULTS</h2>
-                <p>The hybrid model has an 56.0% accuracy in identifying best offers. That of Flock Freight is 51.7%.
-                </p>
+                <h2 id="cardtitle">MODEL SELECTION</h2>
+                <p>XGB Regressor, Decision Tree, and XGB Classifier are the best models to predict the offer rate,
+                    estimate number of offers, and identify best offers.</p>
+
+                <div class="row" style="margin: auto">
+                    <div class="column3">
+                        <img src="figures/offer_count_model_selection.png" width=100% class="center">
+
+                    </div>
+                    <div class="column3">
+                        <img src="figures/minimum_cost_model_selection.png" width=100% class="center">
+                    </div>
+                    <div class="column3">
+                        <img src="figures/hybrid_model_selection.png" width=100% class="center">
+                    </div>
+                </div>
+
                 <img src="figures/offer_model_feature_importance.png" width=50% class="center">
                 <img src="figures/minimum_cost_model_feature_importance.png" width=50% class="center">
                 <img src="figures/hybrid_model_feature_importance.png" width=50% class="center">
+            </div>
+
+            <div class="card">
+                <h2 id="cardtitle">RESULTS</h2>
+                <p>The hybrid model has an 56.0% accuracy in identifying best offers. That of Flock Freight is 51.7%.
+                </p>
+
+                <div class="row" style="margin: auto">
+                    <div class="column3">
+                        <img src="figures/offer_count_model_selection.png" width=100% class="center">
+
+                    </div>
+                    <div class="column3">
+                        <img src="figures/minimum_cost_model_selection.png" width=100% class="center">
+                    </div>
+                    <div class="column3">
+                        <img src="figures/hybrid_model_selection.png" width=100% class="center">
+                    </div>
+                </div>
+
+                <div class="row" style="margin: auto">
+                    <div class="column2">
+                        <img src="figures/model_accuracy.png" width=100% class="center">
+
+                    </div>
+                    <div class="column2">
+                        <img src="figures/model_sensitivity.png" width=100% class="center">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
